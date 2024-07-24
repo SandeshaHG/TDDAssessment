@@ -93,4 +93,12 @@ class AddServiceTest < ActiveSupport::TestCase
 
     assert_equal("negative numbers not allowed -1, -2, -3", error.message)
   end
+
+  test 'should display the right message when negative numbers are present, even with other delimiters' do
+    error = assert_raises(ArgumentError) do
+        @service.add("//;\n1;2,-45;-7")
+    end
+
+    assert_equal("negative numbers not allowed -45, -7", error.message)
+  end
 end
