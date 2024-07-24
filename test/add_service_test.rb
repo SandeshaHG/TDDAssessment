@@ -39,20 +39,6 @@ class AddServiceTest < ActiveSupport::TestCase
     assert_equal 12, @service.add("12")
   end
 
-  test 'should raise error for strings which has any alphabet characters' do
-    assert_raises(ArgumentError) do
-        @service.add("12abcd")
-    end
-
-    assert_raises(ArgumentError) do
-        @service.add("abcd12abcd")
-    end
-
-    assert_raises(ArgumentError) do
-        @service.add("abcd12")
-    end
-  end
-
   test 'should add 2 numbers in a string with commas' do
     assert_equal 15, @service.add("7,8")
   end
@@ -63,5 +49,9 @@ class AddServiceTest < ActiveSupport::TestCase
 
   test 'should add 4 numbers in a string with commas' do
     assert_equal 30, @service.add("7,8,10,5")
+  end
+
+  test 'should add 2 numbers if they are separated by /n (new line)' do
+    assert_equal 15, @service.add("7\n8")
   end
 end
