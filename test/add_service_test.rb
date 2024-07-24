@@ -73,6 +73,16 @@ class AddServiceTest < ActiveSupport::TestCase
   end
 
   test 'should return the right response with custom delimiters' do
-    assert_equal 48, @service.add("//abcd\n1abcd2,45")
+    assert_equal 48, @service.add("//;\n1;2,45")
+  end
+
+  test 'should return the right response with multiple charactered delimiters' do
+    assert_equal 48, @service.add("//abc;def]\n1abc;def]2abc;def]45")
+  end
+
+  test 'should raise error if negative numbers are present' do
+    assert_raises(ArgumentError, "negative numbers not allowed -1,-2,-3") do
+        @service.add("-1,-2,-3")
+    end
   end
 end
