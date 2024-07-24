@@ -9,9 +9,9 @@ class AddService
         end
 
         fetched_numbers = input_string.split(fetch_delimiter(input_string)).map(&:to_i)
-
-        if fetched_numbers.any? { |num| num < 0 }
-            raise ArgumentError
+        negative_fetched_numbers = fetched_numbers.select { |num| num < 0 }
+        if negative_fetched_numbers.any?
+            raise ArgumentError, "negative numbers not allowed #{negative_fetched_numbers.join(', ')}"
         end
         fetched_numbers.sum
     end
