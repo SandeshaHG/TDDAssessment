@@ -81,8 +81,16 @@ class AddServiceTest < ActiveSupport::TestCase
   end
 
   test 'should raise error if negative numbers are present' do
-    assert_raises(ArgumentError, "negative numbers not allowed -1,-2,-3") do
+    assert_raises(ArgumentError) do
         @service.add("-1,-2,-3")
     end
+  end
+
+  test 'should display the right message when negative numbers are present' do
+    error = assert_raises(ArgumentError) do
+        @service.add("-1,-2,-3,4,6,7,8")
+    end
+
+    assert_equal("negative numbers not allowed -1, -2, -3", error.message)
   end
 end
