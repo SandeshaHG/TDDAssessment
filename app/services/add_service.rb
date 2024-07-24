@@ -1,4 +1,4 @@
 class AddService
-    def add
+    def add(input_string)
     end
 end
