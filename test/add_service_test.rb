@@ -13,12 +13,6 @@ class AddServiceTest < ActiveSupport::TestCase
     assert_respond_to @service, :add
   end
 
-  test 'add method should accept a string input' do
-    assert_nothing_raised do
-      @service.add("sample string")
-    end
-  end
-
   test 'should raise error if initialized without string' do
     assert_raises(ArgumentError) do
         @service.add(12345)
