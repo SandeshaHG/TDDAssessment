@@ -19,5 +19,7 @@ class AddService
         unless input_string.start_with?("//")
             return /[\n,]/
         end
+        custom_delimter = input_string.split("\n").first
+        custom_delimter = custom_delimter[2..-1]
     end
 end
