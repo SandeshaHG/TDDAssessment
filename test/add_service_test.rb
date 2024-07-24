@@ -40,4 +40,8 @@ class AddServiceTest < ActiveSupport::TestCase
   test 'should return 0 for empty string' do
     assert_equal 0, @service.add("")
   end
+
+  test 'should return the number, if the entire string contains only digits' do
+    assert_equal 12, @service.add("12")
+  end
 end
