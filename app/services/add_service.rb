@@ -8,11 +8,7 @@ class AddService
         if input_string.match?(/\A\d+\z/)
             return input_string.to_i
         end
-
-        if input_string.match?(/[a-zA-Z]/)
-            raise ArgumentError, 'String contains alphabets'
-        end
-
-        return input_string.split(',').map(&:to_i).sum
+        
+        return input_string.split(/[\n,]/).map(&:to_i).sum
     end
 end
