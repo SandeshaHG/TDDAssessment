@@ -62,4 +62,13 @@ class AddServiceTest < ActiveSupport::TestCase
   test 'should add multiple numbers if they are separated by /n (new line) and commas' do
     assert_equal 35, @service.add("7\n8,10\n10")
   end
+
+  test 'should respond to validate_input method' do
+    assert_respond_to @service, :validate_input
+  end
+
+  test 'should respond to fetch delimiter method and return \n and , if // is not present' do
+    assert_respond_to @service, :fetch_delimiter
+    assert_equal 35, @service.add("7\n8,10\n10")
+  end
 end
