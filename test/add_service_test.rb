@@ -44,4 +44,18 @@ class AddServiceTest < ActiveSupport::TestCase
   test 'should return the number, if the entire string contains only digits' do
     assert_equal 12, @service.add("12")
   end
+
+  test 'should raise error for strings which has any alphabet characters' do
+    assert_raises(ArgumentError) do
+        @service.add("12abcd")
+    end
+
+    assert_raises(ArgumentError) do
+        @service.add("abcd12abcd")
+    end
+
+    assert_raises(ArgumentError) do
+        @service.add("abcd12")
+    end
+  end
 end
