@@ -56,4 +56,12 @@ class AddServiceTest < ActiveSupport::TestCase
   test 'should add 2 numbers in a string with commas' do
     assert_equal 15, @service.add("7,8")
   end
+
+  test 'should add 3 numbers in a string with commas' do
+    assert_equal 25, @service.add("7,8,10")
+  end
+
+  test 'should add 4 numbers in a string with commas' do
+    assert_equal 30, @service.add("7,8,10,5")
+  end
 end
