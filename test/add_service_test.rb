@@ -21,19 +21,23 @@ class AddServiceTest < ActiveSupport::TestCase
 
   test 'should raise error if initialized without string' do
     assert_raises(ArgumentError) do
-      AddService.new(12345)
+        @service.add(12345)
     end
 
     assert_raises(ArgumentError) do
-      AddService.new(nil)
+        @service.add(nil)
     end
 
     assert_raises(ArgumentError) do
-      AddService.new({})
+        @service.add({})
     end
 
     assert_raises(ArgumentError) do
-      AddService.new([])
+        @service.add([])
     end
+  end
+
+  test 'should return 0 for empty string' do
+    assert_equal 0, @service.add("")
   end
 end
