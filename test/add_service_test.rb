@@ -54,4 +54,12 @@ class AddServiceTest < ActiveSupport::TestCase
   test 'should add 2 numbers if they are separated by /n (new line)' do
     assert_equal 15, @service.add("7\n8")
   end
+
+  test 'should add multiple numbers if they are separated by /n (new line)' do
+    assert_equal 25, @service.add("7\n8\n10")
+  end
+
+  test 'should add multiple numbers if they are separated by /n (new line) and commas' do
+    assert_equal 35, @service.add("7\n8,10\n10")
+  end
 end
