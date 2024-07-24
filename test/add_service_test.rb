@@ -73,6 +73,6 @@ class AddServiceTest < ActiveSupport::TestCase
   end
 
   test 'should return the necessary delimiter  if // is present' do
-    assert_equal 3, @service.fetch_delimiter("//;\n1;2")
+    assert_equal ';', @service.fetch_delimiter("//;\n1;2")
   end
 end
