@@ -8,5 +8,9 @@ class AddService
         if input_string.match?(/\A\d+\z/)
             return input_string.to_i
         end
+
+        if input_string.match?(/[a-zA-Z]/)
+            raise ArgumentError, 'String contains alphabets'
+        end
     end
 end
