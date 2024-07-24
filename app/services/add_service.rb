@@ -16,10 +16,13 @@ class AddService
     end
 
     def fetch_delimiter(input_string)
-        unless input_string.start_with?("//")
-            return /[\n,]/
+        default_delimiter = /[\n,]/
+        
+        if input_string.start_with?("//")
+          custom_delimiter = input_string.split("\n").first[2..-1]
+          Regexp.union(default_delimiter, /#{Regexp.escape(custom_delimiter)}/)
+        else
+          default_delimiter
         end
-        custom_delimter = input_string.split("\n").first
-        custom_delimter = custom_delimter[2..-1]
-    end
+      end
 end
