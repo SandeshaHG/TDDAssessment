@@ -8,7 +8,12 @@ class AddService
             input_string.to_i
         end
 
-        input_string.split(fetch_delimiter(input_string)).map(&:to_i).sum
+        fetched_numbers = input_string.split(fetch_delimiter(input_string)).map(&:to_i)
+
+        if fetched_numbers.any? { |num| num < 0 }
+            raise ArgumentError
+        end
+        fetched_numbers.sum
     end
 
     def validate_input(input_string)
