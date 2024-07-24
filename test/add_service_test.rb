@@ -71,4 +71,8 @@ class AddServiceTest < ActiveSupport::TestCase
     assert_respond_to @service, :fetch_delimiter
     assert_equal 35, @service.add("7\n8,10\n10")
   end
+
+  test 'should return the necessary delimiter  if // is present' do
+    assert_equal 3, @service.fetch_delimiter("//;\n1;2")
+  end
 end
